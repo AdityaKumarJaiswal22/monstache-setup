@@ -1,0 +1,64 @@
+# Elasticsearch Configuration
+elasticsearch-urls = [
+  "http://<es-vm1>:9200",
+  "http://<es-vm2>:9200"
+]
+elasticsearch-user = "elastic"
+elasticsearch-password = "Elast1icLLm$2023"
+
+# MongoDB Configuration
+mongo-url = "mongodb://mongoadmin:devpass2022@<mongo-vm1>3:27017,<mongo-vm2>:27017/database?authSource=admin&authMechanism=SCRAM-SHA-256"
+
+# MongoDB Change Streams
+change-stream-namespaces = [
+  "col1.conversations_collection",
+  "col1.session_user_info",
+  "col2.conversation_collections_test"
+]
+
+# MongoDB Direct Read
+direct-read-namespaces = [
+  "col1.conversations_collection",
+  "col1.session_user_info",
+  "col2.conversation_collections_test"
+]
+
+# General Options
+verbose = true
+stats = true
+index-stats = true
+resume = true
+index-oplog-time = true
+
+# High Availability (HA) Cluster Configuration
+cluster-name = "HA"
+workers = ["W1", "W2"]
+config-database-name = "monstache_coordination"
+
+# MongoDB to Elasticsearch Mappings
+[[mapping]]
+namespace = "col1.conversations_collection"
+index = "col1.conversations_collection"
+
+[[mapping]]
+namespace = "col1.session_user_info"
+index = "col1.session_user_info"
+
+[[mapping]]
+namespace = "col2.conversation_collections_test"
+index = "col2.conversation_collections_test"
+
+# Log Files
+[logs]
+error = "/home/ubuntu/monstache/logs/error.log"
+info  = "/home/ubuntu/monstache/logs/info.log"
+warn  = "/home/ubuntu/monstache/logs/warn.log"
+trace = "/home/ubuntu/monstache/logs/trace.log"
+stats = "/home/ubuntu/monstache/logs/stats.log"
+
+# Log Rotation Configuration
+[log-rotate]
+max-size     = 200     # Max log file size in MB
+max-backups  = 7       # Number of rotated logs to keep
+max-age      = 30      # Max age of logs in days
+compress     = true    # Compress rotated logs
