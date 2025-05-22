@@ -1,0 +1,17 @@
+elasticsearch-urls = ["http://localhost:9200"]
+# elasticsearch-user = "elastic"
+# elasticsearch-password = "<ES-password>"
+
+mongo-url = "mongodb://admin:root@127.0.0.1:27017/database?authSource=admin&authMechanism=SCRAM-SHA-256"
+
+# Following are mongo collections that needs to be synced
+change-stream-namespaces = ["test.collection"]
+
+# Following are mongo collections to be synced
+direct-read-namespaces = ["test.collection"]
+
+verbose = true
+stats = true
+index-stats = true
+
+index-oplog-time = true
